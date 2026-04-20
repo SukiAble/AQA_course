@@ -12,10 +12,6 @@ export class CatalogPage {
         this.tabletPrice = page.locator('[id="product-price-5"]');
         this.coffeeMachinePrice = page.locator('[id="product-price-6"]');
 
-        this.tabletNameValue = '';
-        this.coffeeMachineNameValue = '';
-        this.tabletPriceValue = '';
-        this.coffeeMachinePriceValue = '';
     }
 
 async selectproduct() {
@@ -23,16 +19,30 @@ async selectproduct() {
         await this.tabletProduct.click();
         //await expect(this.tabletProduct).toHaveText("Remove from Basket");
         //const basketCount = await this.basketCounter.innerText();
-        await expect(this.basketCounter).toHaveText('2');
-        await this.saveProductinfo();
+        const itemsInfo = await this.getProductinfo();
+        return itemsInfo;
+    }
+
+async gotoBasket() {
         await this.basketCounter.click();
     }
 
-async saveProductinfo() {
-    this.tabletNameValue = await this.tabletName.innerText();
-    this.coffeeMachineNameValue = await this.coffeeMachineName.innerText();
-    this.tabletPriceValue = await this.tabletPrice.innerText();
-    this.coffeeMachinePriceValue = await this.coffeeMachinePrice.innerText();
+async getProductinfo() {
+    return {
+        firstProduct: {
+            name: await this.tabletName.innerText(),
+            price: await this.tabletPrice.innerText()
+        },
+        secondProduct: {
+            name: await this.coffeeMachineName.innerText(),
+            price: await this.coffeeMachinePrice.innerText()
+        }
+    }
+
+    //this.tabletNameValue = await this.tabletName.innerText();
+    //this.coffeeMachineNameValue = await this.coffeeMachineName.innerText();
+    //this.tabletPriceValue = await this.tabletPrice.innerText();
+    //this.coffeeMachinePriceValue = await this.coffeeMachinePrice.innerText();
 
     console.log('Tablet Name:', this.tabletNameValue);
     console.log('Coffee Machine Name:', this.coffeeMachineNameValue);
