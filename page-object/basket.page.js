@@ -18,7 +18,7 @@ export class basketPage {
     }
 
 
-    async checkTotalPrice() {
+    async goToCheckoutPage() {
         //const firstProductPrice = parseFloat(this.tabletPriceValue.replace('$', ''));
         //const secondProductPrice = parseFloat(this.coffeeMachinePriceValue.replace('$', ''));
         //const expectedTotalPrice = (firstProductPrice + secondProductPrice).toFixed(2);
