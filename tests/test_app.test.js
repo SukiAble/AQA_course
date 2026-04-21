@@ -9,6 +9,31 @@ import { cardData } from '../data/testData';
 import { myAccountPage } from '../page-object/myAccount.page';
 
 test.setTimeout(60000); // Set a longer timeout for the test
+
+test.describe('E2E Test: User Registration, Login, Order Placement, and Account Verification', () => {
+ 
+test.beforeAll(async () => {
+  console.log("beforeAll: prepare test data")
+  console.log("beforeAll: generate user")
+  console.log("beforeAll: ready")
+});
+
+test.beforeEach(async ({ page }) => {
+  console.log("beforeEach: open home page")
+});
+
+test.afterEach(async ({ page }, testInfo) => {
+  if (testInfo.status !== testInfo.expectedStatus) {
+    console.log(`Test failed: ${testInfo.title}`);
+    await page.screenshot({ path: `test-results/${testInfo.title}--failed.png`, fullPage: true });
+  }
+});
+
+test.afterAll(async () => {
+  console.log("afterAll: clean up test data")
+  console.log("afterAll: ready")
+});
+
 test('Create user, login, order 2 items, payment', async ({ page }) => {
   const registerPage = new RegisterPage(page);
   const loginPage = new LoginPage(page);
@@ -94,4 +119,5 @@ await test.step("Logout", async () => {
         await MyAccountPage.logout();
 });
 
+  });
 });
