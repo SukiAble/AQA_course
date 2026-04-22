@@ -33,8 +33,11 @@ export default defineConfig({
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    geolocation: { longitude: 50.4501, latitude: 30.5235 },
+    permissions: ['geolocation'],
+    timezoneId: 'UTC',
     timeout: 60000,
-    headless: true,
+    headless: false,
     actionTimeout: 10000,
     navigationTimeout: 10000,
     /* Base URL to use in actions like `await page.goto('')`. */
