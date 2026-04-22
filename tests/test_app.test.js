@@ -4,8 +4,9 @@ import { basketPage } from '../page-object/basket.page';
 import { checkoutPage } from '../page-object/checkout.page';
 import { cardData } from '../data/testData';
 import { myAccountPage } from '../page-object/myAccount.page';
+import { devices } from '@playwright/test';
 
-
+test.use({...devices['iPhone 12']});
 test.describe('E2E Test: User Registration, Login, Order Placement, and Account Verification', () => {
  
 test.beforeAll(async () => {

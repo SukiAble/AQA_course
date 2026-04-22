@@ -34,7 +34,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     timeout: 60000,
-    headless: false,
+    headless: true,
     actionTimeout: 10000,
     navigationTimeout: 10000,
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -51,7 +51,9 @@ export default defineConfig({
       name: 'setup-ui',
       testMatch: 'auth.setup.js',
       use: {
-        baseURL: process.env.UI_BASE_URL
+        baseURL: process.env.UI_BASE_URL,
+                ...devices['Desktop Chrome'],
+
       }
     },
 
@@ -61,8 +63,9 @@ export default defineConfig({
       dependencies: ['setup-ui'],
       use: {
         baseURL: process.env.UI_BASE_URL,
-        storageState: 'data/storageState.json'
-      }
+        storageState: 'data/storageState.json',
+        ...devices['Desktop Chrome'],
+            }
     },
 
     {
