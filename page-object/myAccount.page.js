@@ -10,7 +10,6 @@ export class myAccountPage {
 
     async logout() {
         await this.logoutButton.click();
-        await this.page.pause();
         await expect(this.page).toHaveURL('/login');
     }
 
