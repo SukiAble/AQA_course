@@ -33,7 +33,10 @@ export default defineConfig({
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    timeout: 60000,
     headless: false,
+    actionTimeout: 10000,
+    navigationTimeout: 10000,
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 

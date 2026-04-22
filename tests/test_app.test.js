@@ -5,7 +5,6 @@ import { checkoutPage } from '../page-object/checkout.page';
 import { cardData } from '../data/testData';
 import { myAccountPage } from '../page-object/myAccount.page';
 
-test.setTimeout(60000); // Set a longer timeout for the test
 
 test.describe('E2E Test: User Registration, Login, Order Placement, and Account Verification', () => {
  
