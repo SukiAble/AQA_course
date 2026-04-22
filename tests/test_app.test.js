@@ -1,7 +1,4 @@
 import { expect, test } from '@playwright/test';
-import { RegisterPage } from '../page-object/register.page';
-import { NewUser1 } from '../data/testData';
-import { LoginPage } from '../page-object/login.page';
 import { CatalogPage } from '../page-object/catalog.page';
 import { basketPage } from '../page-object/basket.page';
 import { checkoutPage } from '../page-object/checkout.page';
@@ -20,6 +17,7 @@ test.beforeAll(async () => {
 
 test.beforeEach(async ({ page }) => {
   console.log("beforeEach: open home page")
+  await page.goto('/');
 });
 
 test.afterEach(async ({ page }, testInfo) => {
@@ -35,8 +33,6 @@ test.afterAll(async () => {
 });
 
 test('Create user, login, order 2 items, payment', async ({ page }) => {
-  const registerPage = new RegisterPage(page);
-  const loginPage = new LoginPage(page);
   const catalogPage = new CatalogPage(page);
   const CheckoutPage = new checkoutPage(page);
   const MyAccountPage = new myAccountPage(page);
@@ -44,17 +40,6 @@ test('Create user, login, order 2 items, payment', async ({ page }) => {
 let items;
 let basketpage;
 
-await test.step("Open login page", async () => {
-  await registerPage.openLoginPage();
-});
-
-await test.step("Register new user", async () => {
-  await registerPage.fillRegistrationForm(NewUser1);
-});
-
-await test.step("Login with new user", async () => {
-  await loginPage.login(NewUser1.Email, NewUser1.Password);
-});
 
 await test.step("Select 2 items and check basket counter", async () => {
   items = await catalogPage.selectproduct();
