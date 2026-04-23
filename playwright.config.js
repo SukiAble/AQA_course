@@ -37,7 +37,7 @@ export default defineConfig({
     permissions: ['geolocation'],
     timezoneId: 'UTC',
     timeout: 60000,
-    headless: false,
+    headless: true,
     actionTimeout: 10000,
     navigationTimeout: 10000,
     /* Base URL to use in actions like `await page.goto('')`. */
