@@ -1,8 +1,10 @@
 import { expect } from "@playwright/test";
+import { AbstractPage } from './Abstract.page';
 
-export class CatalogPage {
+
+export class CatalogPage extends AbstractPage {
     constructor(page) {
-        this.page = page;
+        super(page);
         this.coffeeMachineProduct = page.locator('[id="product-add-6"]');
         this.tabletProduct = page.locator('[id="product-add-5"]');
         this.basketCounter = page.locator('[id="cart-count"]');

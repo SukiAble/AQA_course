@@ -16,6 +16,7 @@ dotenv.config({path: '.env'});
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
+  snapshotDir: './data',
   testDir: './tests',
   /* Run tests in files in parallel */
   globalTeardown: './global-teardown.js',
@@ -37,7 +38,7 @@ export default defineConfig({
     permissions: ['geolocation'],
     timezoneId: 'UTC',
     timeout: 60000,
-    headless: true,
+    headless: false,
     actionTimeout: 10000,
     navigationTimeout: 10000,
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -77,6 +78,17 @@ export default defineConfig({
       use: {
         baseURL: process.env.API_BASE_URL
       }
+    },
+
+    {
+      name: 'visual-regression',
+      testMatch: 'visualRegression.test.js',
+      dependencies: ['setup-ui'],
+      use: {
+        baseURL: process.env.UI_BASE_URL,
+        storageState: 'data/storageState.json',
+        ...devices['Desktop Chrome'],
+            }
     }
 
     /* Test against mobile viewports. */

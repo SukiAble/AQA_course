@@ -1,8 +1,10 @@
 import { expect } from "@playwright/test";
+import { AbstractPage } from './Abstract.page';
 
-export class checkoutPage {
+
+export class checkoutPage extends AbstractPage {
     constructor(page) {
-        this.page = page;
+        super(page);
         this.cardNumberField = page.getByPlaceholder('Card Number (16 digits)');
         this.payNowButton = page.getByText('Pay Now');
         this.payNowBtn = page.getByRole('button', { name: 'Pay Now' });

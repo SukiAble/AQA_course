@@ -1,8 +1,9 @@
 import { expect } from '@playwright/test';
+import { AbstractPage } from './Abstract.page';
 
-export class basketPage {
+export class basketPage extends AbstractPage {
     constructor(page, tabletNameValue, coffeeMachineNameValue, tabletPriceValue, coffeeMachinePriceValue) {
-        this.page = page;
+        super(page);
         this.firstProductItem = page.locator('[id="cart-item-name-5"]');
         this.secondProductItem = page.locator('[id="cart-item-name-6"]');
 

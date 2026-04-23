@@ -1,8 +1,10 @@
 import { expect } from '@playwright/test';
+import { AbstractPage } from './Abstract.page';
 
-export class myAccountPage {
+
+export class myAccountPage extends AbstractPage {
     constructor(page) {
-        this.page = page;
+        super(page);
         this.items = page.locator('#account-order-0 ul > li')
         this.totalAmountField = page.locator('#account-order-0 p', { hasText: 'Total Amount:' });
         this.logoutButton = page.locator('[id="account-logout-button"]');

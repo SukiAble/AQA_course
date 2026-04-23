@@ -6,7 +6,8 @@
   "scripts": {
     "api": "npx playwright test --project=api-tests",
     "ui-e2e": "npx playwright test --project=e2e-tests",
-    "test-ui": "npx playwright test --ui"
+    "test-ui": "npx playwright test --ui",
+    "visual-regression": "npx playwright test --project=visual-regression"
   },
   "keywords": [],
   "author": "",
